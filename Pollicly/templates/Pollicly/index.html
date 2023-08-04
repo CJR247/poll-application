@@ -1,0 +1,30 @@
+{% extends 'Pollicly/base.html' %}
+{% block content %}
+
+
+<h3><strong>Django Polls Application</strong></h3>
+
+<div class="list-group">
+    {% if user.is_authenticated %}
+    {% for question in questions %}
+    <a href=" {% url 'vote' question.id %} " class="list-group-item list-group-item-action">
+        <h5>{{question.question}}</h5></a>
+   {% endfor %}
+   {% else %}
+   <div class="alert alert-dark" role="alert">
+    <h4 class="alert-heading">You can't view the poll's</h4>
+    <p>To add polls you need to login first</p>
+    <hr>
+  
+  </div>
+    {% endif %}
+    
+</div>
+
+
+
+
+    
+    
+
+{% endblock %}
